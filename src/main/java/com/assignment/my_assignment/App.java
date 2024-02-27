@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -15,11 +16,16 @@ public class App
     public static void main( String[] args )
     {
     	// Set the path to chromedriver.exe
-       // System.setProperty("webdriver.chrome.driver", "C:/Users/rama4/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe");
+       //System.setProperty("webdriver.chrome.driver", "C:/Users/rama4/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe");
+    	
+    	WebDriverManager.chromedriver().setup();
+    // Create ChromeOptions object and set headless mode
+    	ChromeOptions ChromeOptions = new ChromeOptions();
+        ChromeOptions.addArguments("--headless");
         
         // Initialize WebDriver
-    	WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+    	//WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver(ChromeOptions);
         
         // Open Facebook login page
         driver.get("https://www.facebook.com/");
